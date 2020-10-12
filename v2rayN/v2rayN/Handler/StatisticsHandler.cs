@@ -74,7 +74,7 @@ namespace v2rayN.Handler
         {
             if (channel_ == null)
             {
-                Global.statePort = GetFreePort();
+                Global.statePort = 15432;
 
                 channel_ = new Channel($"{Global.Loopback}:{Global.statePort}", ChannelCredentials.Insecure);
                 channel_.ConnectAsync();

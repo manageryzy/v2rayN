@@ -795,10 +795,24 @@ namespace v2rayN.Handler
                     Inbounds apiInbound = new Inbounds();
                     Inboundsettings apiInboundSettings = new Inboundsettings();
                     apiInbound.tag = tag;
-                    apiInbound.listen = Global.Loopback;
+                    if (config.allowLANConn)
+                    {
+                        apiInbound.listen = "0.0.0.0";
+                    }
+                    else
+                    {
+                        apiInbound.listen = Global.Loopback;
+                    }
                     apiInbound.port = Global.statePort;
                     apiInbound.protocol = Global.InboundAPIProtocal;
-                    apiInboundSettings.address = Global.Loopback;
+                    if (config.allowLANConn)
+                    {
+                        apiInboundSettings.address = "0.0.0.0";
+                    }
+                    else
+                    {
+                        apiInboundSettings.address = Global.Loopback;
+                    }
                     apiInbound.settings = apiInboundSettings;
                     v2rayConfig.inbounds.Add(apiInbound);
                 }
